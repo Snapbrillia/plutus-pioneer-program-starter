@@ -3,11 +3,23 @@ image:
 tasks:
   - init: |
       mkdir -p /home/gitpod/.config/nix
-      echo 'sandbox = false' >> /home/gitpod/.config/nix/nix.conf
       git clone https://github.com/input-output-hk/plutus-apps
+      gp sync-done bundle
   - name: perf
     command: |
       htop
+  - name: RUN
+    init: gp sync-await bundle
+    command: |
+      cd plutus-apps/plutus-playground-server
+      nix-shell
+      GC_DONT_GC=1 nix-build -A plutus-playground.server
+  - name: RUN 2
+    init: gp sync-await bundle
+    command: |
+      cd plutus-apps/plutus-playground-client
+      nix-shell
+      npm run start
 #   - name: vm - ssh
 #     command: |
 #       make ssh
