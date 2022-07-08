@@ -10,7 +10,7 @@ tasks:
   # - name: vm - ssh
   #   command: |
   #     make ssh
-  - name: vm - console
+  - name: nix - console
     command: |
       make start
 ports:
