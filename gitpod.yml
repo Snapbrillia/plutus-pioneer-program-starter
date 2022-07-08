@@ -1,22 +1,26 @@
+image:
+  file: .gitpod.Dockerfile
 tasks:
-  - name: Plutus Server Start
-    init: >
-        curl -L https://nixos.org/nix/install | sh && 
-        git clone https://github.com/input-output-hk/plutus-apps &&
-        gp sync-done initial
-    command: >
-        sudo -i &&
-        echo -e "substituters = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/ trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" > /etc/nix/nix.conf &&
-        exit &&
-        cd ~/plutus-apps &&
-        nix-shell &&
-        cd plutus-playground-server &&
-        GC_DONT_GC=1 nix-build -A plutus-playground.server
-  - name: Plutus Client Start
-    init: gp sync-await initial 
-    command: >
-        cd ~/plutus-apps && 
-        nix-shell && 
-        cd plutus-playground-client &&
-        npm run start
-  
+  - init: |
+      mkdir -p /home/gitpod/.config/nix
+      echo 'sandbox = false' >> /home/gitpod/.config/nix/nix.conf
+  - name: perf
+    command: |
+      htop
+  # - name: vm - ssh
+  #   command: |
+  #     make ssh
+  - name: vm - console
+    command: |
+      make start
+ports:
+  - port: 2222
+    onOpen: ignore
+  - port: 8022
+    onOpen: ignore
+  - port: 8088
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - bbenoist.Nix
