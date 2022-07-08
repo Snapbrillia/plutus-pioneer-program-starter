@@ -7,10 +7,10 @@ tasks:
   - name: perf
     command: |
       htop
-  # - name: vm - ssh
-  #   command: |
-  #     make ssh
-  - name: nix - console
+#   - name: vm - ssh
+#     command: |
+#       make ssh
+  - name: nixos - console
     command: |
       make start
 ports:
