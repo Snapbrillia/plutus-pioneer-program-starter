@@ -7,10 +7,8 @@ RUN addgroup --system nixbld \
   && adduser gitpod nixbld \
   && for i in $(seq 1 30); do useradd -ms /bin/bash nixbld$i &&  adduser nixbld$i nixbld; done \
   && mkdir -m 0755 /nix && chown gitpod /nix \
-  && mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf \
-  && echo -e "substituters = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/ trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" >> /etc/nix/nix.conf
+  && mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf 
 
-  
 # Install Nix
 CMD /bin/bash -l
 USER gitpod
@@ -39,3 +37,7 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 
 # Install qemu
 RUN sudo apt update -y && sudo apt install qemu qemu-system-x86 linux-image-$(uname -r) libguestfs-tools sshpass netcat -y
+
+# Install IOHK Info
+RUN echo -e "substituters = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/ trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" >> /home/gitpod/etc/nix/nix.conf
+  
