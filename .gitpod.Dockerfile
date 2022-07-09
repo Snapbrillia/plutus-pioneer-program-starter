@@ -1,6 +1,6 @@
 FROM gitpod/workspace-base
 
-RUN apt-get update \
+RUN apt-get update && apt-get install -y apt-transport-https \
  && apt-get install -y curl \
  && apt-get install -y  bzip2 \ 
  && mkdir -p /nix /etc/nix \
