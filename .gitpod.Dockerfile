@@ -2,7 +2,7 @@ FROM gitpod/workspace-base
 
 USER root
 
-RUN sudo sh -c 'apt update && apt install curl' \
+RUN sh -c 'apt update && apt install curl' \
   && sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
