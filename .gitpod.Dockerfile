@@ -4,6 +4,12 @@ USER root
 
 RUN curl https://nixos.org/releases/nix/nix-2.3.14/install | sh
 
+# # Install Nix
+CMD /bin/bash -l
+USER gitpod
+ENV USER gitpod
+WORKDIR /home/gitpod
+
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -iA cachix -f https://cachix.org/api/v1/install \
   && cachix use cachix
