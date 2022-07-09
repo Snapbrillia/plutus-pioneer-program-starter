@@ -15,13 +15,14 @@ RUN apt-get -y update \
 
 
 
-RUN adduser user --home /home/user --disabled-password --gecos "" --shell /bin/bash
+RUN adduser user --home /home/gitpod --disabled-password --gecos "" --shell /bin/bash
 
-USER user
-ENV USER user
-WORKDIR /home/user
+CMD /bin/bash -l
+USER gitpod
+ENV USER gitpod
+WORKDIR /home/gitpod
 
-RUN cd /home/user && git clone https://github.com/input-output-hk/plutus 
+RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus 
 
 
 
@@ -30,7 +31,7 @@ RUN touch .bash_profile \
 
 USER root
 
-RUN sh -c 'cd /home/user/plutus &&  nix-shell'
+RUN sh -c 'cd /home/gitpod/plutus &&  nix-shell'
 
 CMD /bin/bash 
 
