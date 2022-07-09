@@ -2,8 +2,7 @@ FROM gitpod/workspace-base
 
 USER root
 
-RUN sh -c 'apt update && apt install curl' \
-  && sh <(curl -L https://nixos.org/nix/install) --no-daemon
+RUN curl https://nixos.org/releases/nix/nix-2.3.14/install | sh
 
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -iA cachix -f https://cachix.org/api/v1/install \
