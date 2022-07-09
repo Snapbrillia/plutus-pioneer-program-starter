@@ -26,7 +26,7 @@ RUN cd /home/user && git clone https://github.com/input-output-hk/plutus
 
 
 RUN touch .bash_profile \
- && curl https://nixos.org/releases/nix/nix-2.2.1/install | sh
+ && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh
 
 USER root
 
