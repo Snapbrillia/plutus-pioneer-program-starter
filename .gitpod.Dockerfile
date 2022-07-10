@@ -27,7 +27,7 @@ RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus
 RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus-apps
 
 RUN touch .bash_profile \
- && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh
+ && curl https://nixos.org/nix/install | sh
  
 # RUN cd /home/gitpod/plutus-apps 
 
