@@ -29,11 +29,11 @@ RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus
 RUN touch .bash_profile \
  && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh
 
-USER root
+# USER root
 
-RUN chmod 755 sh -c 'cd /home/gitpod/plutus &&  nix-shell'
+# RUN chmod 755 sh -c 'cd /home/gitpod/plutus &&  nix-shell'
 
-CMD /bin/bash 
+# CMD /bin/bash 
 
 # USER root
 
