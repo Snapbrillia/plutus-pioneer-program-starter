@@ -46,9 +46,13 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
     
 # Plutus Apps
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
-    && cd /tmp/warmup2 \
-    && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true) 
-    
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
+#     && cd /tmp/warmup2 \
+#     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true) 
+RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus-apps \
+    && cd /home/gitpod/plutus-apps \
+    && cd /home/gitpod/plutus-apps && /nix/store/*nix-2.7.0/bin/nix-shell  
+
+CMD cd /home/gitpod/plutus-apps && /nix/store/*nix-2.7.0/bin/nix-shell    
 
