@@ -28,8 +28,8 @@ RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /
 #   && cachix use digitallyinduced
 
 # Install git
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -i git git-lfs
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#   && nix-env -i git git-lfs
 
 # Install direnv
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
