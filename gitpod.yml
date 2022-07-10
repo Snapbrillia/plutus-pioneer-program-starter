@@ -4,18 +4,22 @@ image:
 ports:
   # IHP Server
   - port: 8000
-    onOpen: open-browser
+    onOpen: open-preview
   # IDE
   - port: 8001
     onOpen: open-browser
 
 tasks:
-  - init: >
+  - name: Haskell
+    init: >
       ( if [ ! -e "Main.hs" ]; then rm -rf /tmp/ihp-boilerplate; git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc; new-application Web'; fi) && nix-shell -j auto --cores 0 --run 'make -s all .envrc' && direnv allow
     command: >
       export IHP_BASEURL=`gp url 8000`;
       export IHP_IDE_BASEURL=`gp url 8001`;
       ./start
+  - name: Plutus
+    init: git clone https://github.com/input-output-hk/plutus-apps
+    command: cd /plutus-apps && nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library 
 vscode:
   extensions:
     - haskell.haskell
