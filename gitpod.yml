@@ -1,39 +1,23 @@
 image:
   file: .gitpod.Dockerfile
-tasks:
-  - init: |
-      mkdir -p /home/gitpod/.config/nix
-      git clone https://github.com/input-output-hk/plutus-apps
-      gp sync-done bundle
-  - name: perf
-    command: |
-      htop
-  - name: RUN
-    init: gp sync-await bundle
-    command: |
-      cd plutus-apps/plutus-playground-server
-      nix-shell
-      GC_DONT_GC=1 nix-build -A plutus-playground.server
-  - name: RUN 2
-    init: gp sync-await bundle
-    command: |
-      cd plutus-apps/plutus-playground-client
-      nix-shell
-      npm run start
-#   - name: vm - ssh
-#     command: |
-#       make ssh
-  - name: nixos - console
-    command: |
-      make start
-ports:
-  - port: 2222
-    onOpen: ignore
-  - port: 8022
-    onOpen: ignore
-  - port: 8088
-    onOpen: ignore
 
+ports:
+  # IHP Server
+  - port: 8000
+    onOpen: open-browser
+  # IDE
+  - port: 8001
+    onOpen: open-browser
+
+tasks:
+  - init: >
+      ( if [ ! -e "Main.hs" ]; then rm -rf /tmp/ihp-boilerplate; git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/ihp-boilerplate; rm -rf /tmp/ihp-boilerplate/.git; cp -r /tmp/ihp-boilerplate/. .; nix-shell -j auto --cores 0 --quiet --run 'make -s all .envrc; new-application Web'; fi) && nix-shell -j auto --cores 0 --run 'make -s all .envrc' && direnv allow
+    command: >
+      export IHP_BASEURL=`gp url 8000`;
+      export IHP_IDE_BASEURL=`gp url 8001`;
+      ./start
 vscode:
   extensions:
-    - bbenoist.Nix
+    - haskell.haskell
+    - s0kil.vscode-hsx
+    - arrterian.nix-env-selector
