@@ -31,7 +31,7 @@ RUN touch .bash_profile \
  
 # RUN cd /home/gitpod/plutus-apps 
 
-USER root
+# USER root
 
 RUN cd /home/gitpod/plutus \
  && nix-shell
