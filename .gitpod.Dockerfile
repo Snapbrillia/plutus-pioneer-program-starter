@@ -29,13 +29,17 @@ RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus-apps
 RUN touch .bash_profile \
  && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh
  
-RUN cd /home/gitpod/plutus-apps 
+# RUN cd /home/gitpod/plutus-apps 
 
-# USER root
+USER root
 
-# RUN chmod 755 sh -c 'cd /home/gitpod/plutus &&  nix-shell'
+RUN cd /home/gitpod/plutus && nix-shell
 
-# CMD /bin/bash 
+CMD /bin/bash 
+
+RUN cd /home/gitpod/plutus-apps && nix-shell \
+ && cd /home/gitpod/plutus-apps/plutus-playground-server \
+ && plutus-playground-server
 
 # USER root
 
