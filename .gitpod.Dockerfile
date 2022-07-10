@@ -31,7 +31,7 @@ RUN touch .bash_profile \
 
 USER root
 
-RUN sh -c 'cd /home/gitpod/plutus &&  nix-shell'
+RUN chmod 755 sh -c 'cd /home/gitpod/plutus &&  nix-shell'
 
 CMD /bin/bash 
 
