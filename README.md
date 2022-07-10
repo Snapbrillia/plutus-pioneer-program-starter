@@ -1,4 +1,4 @@
-# A Snapbrillia template on Gitpod 
+# A Snapbrillia Haskell/Plutus template on Gitpod 
 
 This is a [nix operating system](https://nixos.org/) template configured for ephemeral nix based development environments on [Gitpod](https://www.gitpod.io/).
 
