@@ -24,6 +24,13 @@ WORKDIR /home/gitpod
 
 RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus 
 
+RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus-apps
+
+RUN cd /plutus-apps \
+ && nix-shell \
+ && cd plutus-playground-server \
+ && plutus-playground-server
+
 
 
 RUN touch .bash_profile \
