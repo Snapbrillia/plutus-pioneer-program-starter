@@ -14,6 +14,4 @@ Click the button below to start a new development environment:
 
 Click the above "Open in Gitpod" button to start a new workspace. Once you're ready to push your first code changes, Gitpod will guide you to fork this project so you own it.
 
-### An existing project
 
-To get started with NixOS on Gitpod, copy the contents of this foler to your own project. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
