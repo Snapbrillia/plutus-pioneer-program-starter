@@ -43,10 +43,16 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/warmup \
     && cd /tmp/warmup \
     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
+
+# Add Plutus Core
+RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+    && git clone https://github.com/input-output-hk/plutus /tmp/warmup2 \
+    && cd /tmp/warmup2 \
+    && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
     
 # Add Plutus Apps
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
-    && cd /tmp/warmup2 \
+    && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup3 \
+    && cd /tmp/warmup3 \
     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)    
 
