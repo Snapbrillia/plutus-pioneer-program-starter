@@ -33,11 +33,13 @@ RUN touch .bash_profile \
 
 USER root
 
-RUN cd /home/gitpod/plutus && nix-shell
+RUN cd /home/gitpod/plutus \
+ && nix-shell
 
 CMD /bin/bash 
 
-RUN cd /home/gitpod/plutus-apps && nix-shell \
+RUN cd /home/gitpod/plutus-apps \
+ && nix-shell \
  && cd /home/gitpod/plutus-apps/plutus-playground-server \
  && plutus-playground-server
 
