@@ -20,11 +20,11 @@ RUN adduser user --home /home/gitpod --disabled-password --gecos "" --shell /bin
 CMD /bin/bash -l
 USER gitpod
 ENV USER gitpod
-WORKDIR /home/gitpod
+WORKDIR /home/gitpod/plutus-pioneer-program-starter
 
-RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus 
+RUN cd /home/gitpod/plutus-pioneer-program-starter && git clone https://github.com/input-output-hk/plutus 
 
-RUN cd /home/gitpod && git clone https://github.com/input-output-hk/plutus-apps
+RUN cd /home/gitpod/plutus-pioneer-program-starter && git clone https://github.com/input-output-hk/plutus-apps
 
 RUN touch .bash_profile \
  && curl https://nixos.org/nix/install | sh
