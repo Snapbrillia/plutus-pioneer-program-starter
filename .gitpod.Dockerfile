@@ -38,39 +38,10 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -i direnv \
   && direnv hook bash >> /home/gitpod/.bashrc
-
-# Haskel Biolerplate
-# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-#     && git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/warmup \
-#     && cd /tmp/warmup \
-#     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
-
-# Add Plutus Core
-# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-#     && git clone https://github.com/input-output-hk/plutus /tmp/warmup2 \
-#     && cd /tmp/warmup2 \
-#     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
-    
+  
 # Add Plutus Apps
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup \
     && cd /tmp/warmup \
     && (nix-shell --extra-experimental-features flakes -j auto --cores 0 --quiet --run 'echo ok' || true) 
-
-# Add Plutus App Server
-# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-#     && cd /tmp/warmup/plutus-apps/plutus-playground-server \
-#     && nix build -L -f default.nix
-    
-# Add Plutus App Server
-# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-#     && cd /tmp/warmup/plutus-apps/plutus-playground-client \
-#     && npm run start
-
-# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-#     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
-#     && cd /tmp/warmup2 \
-#     && /nix/store/*nix-2.7.0/bin/nix-shell  
-
-# CMD cd /tmp/warmup2/plutus-apps && /nix/store/*nix-2.7.0/bin/nix-shell
 
