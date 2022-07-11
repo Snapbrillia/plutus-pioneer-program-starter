@@ -58,14 +58,14 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && (nix-shell --extra-experimental-features flakes -j auto --cores 0 --quiet --run 'echo ok' || true) 
 
 # Add Plutus App Server
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && cd /tmp/warmup/plutus-apps/plutus-playground-server \
-    && nix build -L -f default.nix
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#     && cd /tmp/warmup/plutus-apps/plutus-playground-server \
+#     && nix build -L -f default.nix
     
 # Add Plutus App Server
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && cd /tmp/warmup/plutus-apps/plutus-playground-client \
-    && npm run start
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#     && cd /tmp/warmup/plutus-apps/plutus-playground-client \
+#     && npm run start
 
 # RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 #     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
