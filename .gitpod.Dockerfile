@@ -27,8 +27,8 @@ RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /
 # Install cachix
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -iA cachix -f https://cachix.org/api/v1/install \
-  && cachix use cachix \
-  && cachix use digitallyinduced
+  && cachix use cachix 
+#   && cachix use digitallyinduced
 
 # Install git
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
@@ -40,10 +40,10 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && direnv hook bash >> /home/gitpod/.bashrc
 
 # Haskel Biolerplate
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/warmup \
-    && cd /tmp/warmup \
-    && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#     && git clone https://github.com/digitallyinduced/ihp-boilerplate.git /tmp/warmup \
+#     && cd /tmp/warmup \
+#     && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true)
 
 # Add Plutus Core
 # RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
