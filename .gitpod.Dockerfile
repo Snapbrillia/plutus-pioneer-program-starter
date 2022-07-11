@@ -55,7 +55,7 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
     && cd /tmp/warmup2 \
-    && (nix-shell -j auto --cores 0 --quiet --run 'echo ok' || true) 
+    && (nix-shell --extra-experimental-features flakes -j auto --cores 0 --quiet --run 'echo ok' || true) 
 
 # RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 #     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup2 \
