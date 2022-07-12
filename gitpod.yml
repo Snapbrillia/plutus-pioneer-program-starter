@@ -1,6 +1,16 @@
 image:
   file: .gitpod.Dockerfile
 
+ports:
+  - name: Server
+    description: The main application web server
+    port: 8080
+    onOpen: open-browser
+  - name: Client
+    description: The main application web client
+    port: 8009
+    onOpen: open-preview
+
 tasks:
   - name: Setup
     init: >
@@ -15,7 +25,7 @@ tasks:
     command: cd plutus-apps && nix-shell --extra-experimental-features flakes
   - name: Start Client
     init: gp sync-await bundle
-    command: cd plutus-apps && nix-shell --extra-experimental-features flakes 
+    command: cd plutus-apps/plutus-playground-client && nix-shell --extra-experimental-features flakes 
 
 vscode:
   extensions:
