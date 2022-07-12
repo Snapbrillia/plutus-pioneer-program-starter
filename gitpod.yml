@@ -10,9 +10,12 @@ tasks:
   - name: Build Packages
     init: gp sync-await bundle
     command: cd plutus-apps && nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library --extra-experimental-features nix-command
-  - name: Start Nix Shell
+  - name: Start Server
     init: gp sync-await bundle
     command: cd plutus-apps && nix-shell --extra-experimental-features flakes
+  - name: Start Client
+    init: gp sync-await bundle
+    command: cd plutus-apps && nix-shell --extra-experimental-features flakes 
 
 vscode:
   extensions:
