@@ -25,7 +25,7 @@ tasks:
     command: cd plutus-apps && nix-shell --extra-experimental-features flakes
   - name: Start Client
     init: gp sync-await bundle
-    command: cd plutus-apps/plutus-playground-client && nix-shell --extra-experimental-features flakes 
+    command: cd plutus-apps && nix-shell --extra-experimental-features flakes 
 
 vscode:
   extensions:
