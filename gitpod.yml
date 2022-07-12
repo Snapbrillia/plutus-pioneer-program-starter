@@ -2,14 +2,17 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Plutus
+  - name: Setup
     init: >
         git clone https://github.com/input-output-hk/plutus-apps &&
         gp sync-done bundle
-    command: cd plutus-apps && nix-shell --extra-experimental-features flakes -j auto --cores 0 --quiet --run 'make -s all .envrc' && direnv allow 
-  - name: Plutus 2
+    command: cd plutus-apps && nix-shell --extra-experimental-features flakes -j auto --cores 0 --quiet --run 'make -s all .envrc' && direnv allow && cabal update
+  - name: Build Packages
     init: gp sync-await bundle
     command: cd plutus-apps && nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library --extra-experimental-features nix-command
+  - name: Start Nix Shell
+    init: gp sync-await bundle
+    command: cd plutus-apps && nix-shell --extra-experimental-features flakes
 
 vscode:
   extensions:
