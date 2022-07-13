@@ -1,6 +1,6 @@
 FROM gitpod/workspace-nix
 
-# USER root
+USER root
 
 # # Install Nix
 # RUN addgroup --system nixbld \
