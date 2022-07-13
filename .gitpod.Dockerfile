@@ -30,8 +30,8 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && cachix use cachix 
 
 # Install git
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -i git git-lfs
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#   && nix-env -i git git-lfs
 
 # Install direnv
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
