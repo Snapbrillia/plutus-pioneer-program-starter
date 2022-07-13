@@ -34,9 +34,9 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 #   && nix-env -i git git-lfs
 
 # Install direnv
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -i direnv \
-  && direnv hook bash >> /home/gitpod/.bashrc
+# RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+#   && nix-env -i direnv \
+#   && direnv hook bash >> /home/gitpod/.bashrc
   
 # Add Plutus Apps
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
