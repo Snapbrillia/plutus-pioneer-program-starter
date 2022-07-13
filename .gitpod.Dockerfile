@@ -1,4 +1,4 @@
-FROM gitpod/workspace-nix
+FROM gitpod/workspace-full
 
 USER root
 
