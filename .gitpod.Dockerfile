@@ -38,7 +38,7 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && nix-env -i direnv \
   && direnv hook bash >> /home/gitpod/.bashrc
   
-Add Plutus Apps
+# Add Plutus Apps
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup \
     && cd /tmp/warmup \
