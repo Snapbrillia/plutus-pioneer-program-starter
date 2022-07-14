@@ -42,6 +42,4 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup \
     && cd /tmp/warmup \
-    && cd /tmp/warmup/plutus-apps \
-    && nix-shell --extra-experimental-features flakes \
-    && (nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library --extra-experimental-features nix-command) 
+    && (cabal update && nix-build -A plan-nix default.nix && rsync -av result/ plans/ && direnv allow) 
