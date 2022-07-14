@@ -44,6 +44,4 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && cd /tmp/warmup \
     && cd /tmp/warmup/plutus-apps \
     && nix-shell --extra-experimental-features flakes \
-    && nix-build -A plan-nix default.nix \
-    && rsync -av result/ plans/ \
     && (nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library --extra-experimental-features nix-command) 
