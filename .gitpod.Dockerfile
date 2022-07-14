@@ -42,7 +42,7 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
     && git clone https://github.com/input-output-hk/plutus-apps /tmp/warmup \
     && cd /tmp/warmup \
-    && cd plutus-apps \
+    && cd /tmp/warmupplutus-apps \
     && nix-shell --extra-experimental-features flakes \
     && nix-build -A plan-nix default.nix \
     && rsync -av result/ plans/ \
