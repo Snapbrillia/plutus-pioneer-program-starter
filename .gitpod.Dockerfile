@@ -19,7 +19,8 @@ ENV USER gitpod
 WORKDIR /home/gitpod
 
 RUN touch .bash_profile \
- && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh
+ && curl https://releases.nixos.org/nix/nix-2.9.2/install | sh \
+ && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 RUN echo '. /home/gitpod/.nix-profile/etc/profile.d/nix.sh' >> /home/gitpod/.bashrc
 RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
