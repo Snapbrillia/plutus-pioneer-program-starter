@@ -1,6 +1,6 @@
-# A Snapbrillia Haskell/Plutus template on Gitpod (In-Progress)
+# A Snapbrillia Plutus Apps template on Gitpod (In-Progress)
 
-This is a Haskell/Plutus template environment on [Gitpod](https://www.gitpod.io/).
+This is a Plutus Apps template environment on [Gitpod](https://www.gitpod.io/).
 
 ## Next Steps
 
